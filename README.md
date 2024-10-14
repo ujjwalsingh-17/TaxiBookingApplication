@@ -56,4 +56,4 @@ This is a taxi booking application that lets you book taxis easily and securely.
    - Click on the **Logout** button in the navigation menu to securely exit your account.
 
 ## Screenshots
-![HomePage](https://imgur.com/a/HiBnvxC)
+![HomePage](https://imgur.com/a/admin-dashboard-HiBnvxC)
