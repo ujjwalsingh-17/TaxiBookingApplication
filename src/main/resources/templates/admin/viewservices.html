@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>View All Services</title>
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+<!-- Include Font Awesome -->
+<style>
+body {
+	background-color: #f7f9fc;
+	font-family: Arial, sans-serif;
+}
+
+.navbar {
+	background-color: #007f7f;
+	padding: 10px;
+}
+
+.navbar-brand {
+	color: white;
+	font-size: 1.5em;
+}
+
+.navbar-title {
+	color: white;
+	text-align: center;
+	flex-grow: 1;
+	font-size: 1.8em; /* Increase title size */
+	font-weight: bold; /* Make title bold */
+}
+
+h2 {
+	text-align: center;
+	margin: 20px 0;
+	font-size: 2em; /* Bigger heading */
+}
+
+h4 {
+	text-align: center;
+	margin-bottom: 20px;
+	font-size: 1.2em; /* Smaller heading */
+}
+
+.form-table {
+	width: 90%;
+	margin: 20px auto;
+	border-collapse: collapse;
+	background-color: white;
+	border-radius: 5px;
+	box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+	transition: transform 0.3s; /* Animation on hover */
+}
+
+.form-table:hover {
+	transform: scale(1.01); /* Scale up on hover */
+}
+
+.form-table th, .form-table td {
+	padding: 15px; /* Increased padding */
+	text-align: left;
+	border: 1px solid #ddd;
+}
+
+.form-table th {
+	background-color: #005f5f; /* Darker teal for header */
+	color: white;
+	font-weight: bold;
+}
+
+.form-table tr:nth-child(even) {
+	background-color: #f9f9f9;
+}
+
+.form-table tr:hover {
+	background-color: #f1f1f1;
+}
+
+td a {
+	color: #dc3545; /* Red color for delete link */
+	text-decoration: none;
+	font-weight: 500; /* Medium weight */
+}
+
+td a:hover {
+	text-decoration: underline;
+	color: #c82333; /* Darker red on hover */
+}
+</style>
+</head>
+<body>
+
+	<!-- <nav class="navbar">
+		<a class="navbar-brand" href="dashboard"
+			style="display: flex; flex-direction: column; align-items: center;">
+			<img src="/images/userIcon.png" alt="Admin Icon"
+			style="margin-bottom: 5px;" /> <span class="admin-dashboard-text"
+			style="font-size: 16px;">Admin Dashboard</span>
+		</a>
+		<div class="navbar-title">All Services Details</div>
+	</nav> -->
+
+	 <div th:insert="~{fragments/adminheader.html}"></div>
+
+	<h4 th:text="${message}"></h4>
+
+	<table class="form-table">
+		<tr>
+			<th>Id</th>
+			<th>Image</th>
+			<th>Title</th>
+			<th>Description</th>
+			<th>Action</th>
+		</tr>
+		<tr th:each="service : ${services}">
+			<td th:text="${service.id}"></td>
+			<td><img th:src="@{'/myserviceimg/' + ${service.image}}"
+				alt="Something went wrong" style="height:50px"></td>
+
+			<td th:text="${service.title}"></td>
+			<td th:text="${service.description}"></td>
+			<td><a th:href="@{/admin/deleteService/{id}(id=${service.id})}"
+				class="btn btn-danger"> <i class="fas fa-trash-alt"></i> Delete
+					<!-- Added delete icon -->
+			</a></td>
+		</tr>
+	</table>
+
+	<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+	<script
+		src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+	<script
+		src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+</body>
+</html>

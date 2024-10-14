@@ -1,0 +1,18 @@
+<div xmlns:th="http://www.thymeleaf.org">
+<nav class="navbar" th:with="currentPage=${myCurrentPage}">
+		<a class="navbar-brand" href="dashboard"
+			style="display: flex; flex-direction: column; align-items: center;">
+			<img src="/images/userIcon.png" alt="Admin Icon"
+			style="margin-bottom: 5px;" /> <span class="admin-dashboard-text"
+			style="font-size: 16px;">Admin Dashboard</span>
+		</a>
+		<div class="navbar-title"  th:text="${currentPage == '/admin/changeCredentials' ? 'Change Credentials' : 
+                       currentPage == '/admin/addService' ? 'Add Service' : 
+                       currentPage == '/admin/readAllContacts' ? 'Read All Contacts' : 
+                       currentPage == '/admin/readAllBookings' ? 'Read All Bookings' : 
+                       currentPage == '/admin/viewServices' ? ' All Services Details' :
+                       currentPage == '/anotherPage' ? 'Another Page Title' : 
+                       'Default Title'}">></div>
+		
+	</nav>
+	</div>

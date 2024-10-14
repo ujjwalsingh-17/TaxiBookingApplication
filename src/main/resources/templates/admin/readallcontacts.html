@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="ISO-8859-1">
+    <title>Admin Contacts</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"> <!-- Include Font Awesome -->
+    <style>
+        body {
+            background-color: #f7f9fc;
+            font-family: Arial, sans-serif;
+        }
+        .navbar {
+            background-color: #007f7f;
+            padding: 10px;
+        }
+        .navbar-brand {
+            color: white;
+            font-size: 1.5em;
+        }
+        .navbar-title {
+            color: white;
+            text-align: center;
+            flex-grow: 1;
+            font-size: 1.8em; /* Increase title size */
+            font-weight: bold; /* Make title bold */
+        }
+        h3 {
+            text-align: center;
+            margin: 20px 0;
+            font-size: 1.4em; /* Slightly larger heading */
+            font-weight: 600; /* Semi-bold */
+        }
+        table {
+            margin: auto;
+            width: 80% !important; /* Set table width to 80% */
+            background-color: white;
+            border-radius: 5px;
+            overflow: hidden;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s; /* Animation on hover */
+        }
+        table:hover {
+            transform: scale(1.01); /* Scale up on hover */
+        }
+        th {
+            background-color: #005f5f; /* Darker teal for header */
+            color: white;
+            font-size: 1.1em; /* Slightly larger heading */
+            text-align: center;
+        }
+        td {
+            padding: 15px; /* Increased padding */
+            text-align: center;
+            border: 1px solid #ddd; /* Light border */
+        }
+        td a {
+            color: #007f7f; /* Teal link color */
+            text-decoration: none;
+            font-weight: 500; /* Medium weight */
+        }
+        td a:hover {
+            text-decoration: underline;
+            color: #005f5f; /* Darker teal on hover */
+        }
+        /* Responsive adjustments */
+        @media ( max-width : 768px) {
+            .navbar-title {
+                font-size: 1.5em; /* Smaller on mobile */
+            }
+            h3 {
+                font-size: 1.2em; /* Smaller on mobile */
+            }
+            table {
+                width: 90%; /* Full width on mobile */
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- <nav class="navbar">
+        <a class="navbar-brand" href="dashboard" style="display: flex; flex-direction: column; align-items: center;">
+            <img src="/images/userIcon.png" alt="Admin Icon" style="margin-bottom: 5px;"/>
+            <span class="admin-dashboard-text" style="font-size:16px;">Admin Dashboard</span>
+        </a>
+        <div class="navbar-title">Read All Contacts</div>
+    </nav> -->
+    
+    <div th:insert="~{fragments/adminheader.html}"></div>
+
+    <h3 th:text="${message}"></h3>
+
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>NAME</th>
+                <th>EMAIL</th>
+                <th>MESSAGE</th>
+                <th>PHONE</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="contact:${contacts}">
+                <td th:text="${contact.id}"></td>
+                <td th:text="${contact.name}"></td>
+                <td th:text="${contact.email}"></td>
+                <td th:text="${contact.message}"></td>
+                <td th:text="${contact.phone}"></td>
+                <td>
+                    <a th:href="@{/admin/deleteContact/{id}(id=${contact.id})}" style="color: #dc3545;">
+                        <i class="fas fa-trash-alt"></i> Delete <!-- Added delete icon -->
+                    </a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+</body>
+</html>
