@@ -40,8 +40,17 @@ This is a taxi booking application that lets you book taxis easily and securely.
 
 4. **Admin Dashboard**
    - Admin users can access the **Admin Dashboard** from the URL `http://localhost:8080/admin/dashboard`.
-   - Enter the admin username and password. By default, the username is 'admin' and the password is 'admin123' which could be changed by the admin.
-   - Here, you can view all bookings, add new taxi services, change the admin login credentials, and manage users.
+   - Enter the admin username and password. By default, the username is 'admin' and the password is 'admin123', which can be changed by the admin.
+   - In the dashboard, you can:
+     - View all bookings made by users.
+       - Access this feature at `/admin/readAllBookings`, where you can also delete bookings as needed.
+     - View all contact form details filled out by users.
+       - Access this feature at `/admin/readAllContacts`, which includes options to delete contacts if necessary.
+     - Add new services for users, including the ability to upload an image for each service.
+       - Access this feature at `/admin/addService`.
+     - Change admin login credentials.
+       - Access this feature at `/admin/changeCredentials`.
+
 
 5. **Logging Out**
    - Click on the **Logout** button in the navigation menu to securely exit your account.
